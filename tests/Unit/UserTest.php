@@ -16,11 +16,11 @@ class UserTest extends TestCase
     public function test_example(): void
     {
         $user = User::query()->create([
-            "name" => "John Doe",
-            "email" => "john@doe.com",
-            "password" => "password",
+            'name' => 'John Doe',
+            'email' => 'john@doe.com',
+            'password' => 'password',
         ]);
 
-        $this->assertEquals("john@doe.com", $user->email);
+        $this->assertEquals('john@doe.com', $user->email);
     }
 }
