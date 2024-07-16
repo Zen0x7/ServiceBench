@@ -24,6 +24,9 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, mysql
           coverage: pcov
 
+      - name: Shutdown Ubuntu MySQL (SUDO)
+        run: sudo service mysql stop
+
       - name: Setting MySQL
         uses: mirromutth/mysql-action@v1.1
         with:
