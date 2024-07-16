@@ -6,6 +6,23 @@ jobs:
   tests:
     name: Run tests
     runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: mysql:8.0
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: root_password
+          MYSQL_DATABASE: service
+          MYSQL_USER: admin
+          MYSQL_PASSWORD: admin_password
+        options: >-
+          --health-cmd "mysqladmin ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - uses: actions/checkout@v3
 
@@ -23,16 +40,6 @@ jobs:
           php-version: '8.3'
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, mysql
           coverage: pcov
-
-      - name: Shutdown Ubuntu MySQL (SUDO)
-        run: sudo service mysql stop
-
-      - name: Setting MySQL
-        uses: mirromutth/mysql-action@v1.1
-        with:
-          mysql version: "8.0"
-          mysql root password: "password"
-          mysql database: 'service_bench'
 
       - name: Run composer install
         run: composer install -n --prefer-dist
