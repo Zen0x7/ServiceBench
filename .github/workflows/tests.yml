@@ -6,8 +6,31 @@ jobs:
   tests:
     name: Run tests
     runs-on: ubuntu-latest
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: false
+          MYSQL_ROOT_PASSWORD: password
+          MYSQL_DATABASE: service_bench
+        ports:
+          - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
     steps:
       - uses: actions/checkout@v3
+
+      - name: Cache composer dependencies
+        uses: actions/cache@v2
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            composer-
+
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.ci', '.env');"
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -20,11 +43,16 @@ jobs:
         run: composer install -n --prefer-dist
 
       - name: Prepare Laravel Application
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
         run: |
           cp .env.ci .env
           php artisan key:generate
+          php artisan migrate
 
       - name: Run tests
+        env:
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
         run: php artisan test --coverage --coverage-clover storage/coverage/coverage.xml
 
       - uses: codecov/codecov-action@v3
