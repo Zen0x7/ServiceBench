@@ -1,8 +1,9 @@
 <h1 align="center">Service Bench</h1>
 
 <p align="center">
-<a href="https://github.com/Zen0x7/ServiceBench/actions/tests.yml"><img src="https://github.com/Zen0x7/ServiceBench/actions/workflows/tests.yml/badge.svg" alt="Pint"></a>
+<a href="https://github.com/Zen0x7/ServiceBench/actions/tests.yml"><img src="https://github.com/Zen0x7/ServiceBench/actions/workflows/tests.yml/badge.svg" alt="Tests"></a>
 <a href="https://github.com/Zen0x7/ServiceBench/actions/pint.yml"><img src="https://github.com/Zen0x7/ServiceBench/actions/workflows/pint.yml/badge.svg" alt="Pint"></a>
+<a href="https://github.com/Zen0x7/ServiceBench/actions/docker.yml"><img src="https://github.com/Zen0x7/ServiceBench/actions/workflows/docker.yml/badge.svg" alt="Docker"></a>
 </p>
 
 <p align="center">
