@@ -7,11 +7,13 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.9",
+        "laravel/horizon": "^5.25",
         "laravel/octane": "^2.5",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^3.1",
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.16",
         "laravel/sail": "^1.26",
