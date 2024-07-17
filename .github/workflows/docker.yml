@@ -21,10 +21,19 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       -
-        name: Build and push
+        name: Build and push on master
         uses: docker/build-push-action@v6
+        if: github.ref == 'refs/heads/master'
         with:
-          push: github.ref == 'refs/heads/master'
+          push: true
           tags: |
             iantorres/service-bench:latest
+      -
+        name: Build and push on commit
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: |
+            iantorres/service-bench:${{ steps.commit.outputs.short }}
