@@ -14,6 +14,8 @@ RUN install-php-extensions \
 
 COPY . /app
 
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
 RUN composer install
 
 ENV OCTANE_SERVER="frankenphp"
