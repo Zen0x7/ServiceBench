@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full bg-white">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,7 +8,7 @@
     <title>Document</title>
     @vite('resources/js/app.ts')
 </head>
-<body>
+<body class="h-full">
 <div id="app"></div>
 </body>
 </html>
