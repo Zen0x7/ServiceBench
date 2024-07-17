@@ -16,12 +16,15 @@ class UserRegistered extends Mailable implements ShouldQueue
 
     public User $user;
 
+    public string $url;
+
     /**
      * Create a new message instance.
      */
     public function __construct(User $user)
     {
         $this->user = $user;
+        $this->url = url("/auth/verify/{$user->verification_token}");
     }
 
     /**

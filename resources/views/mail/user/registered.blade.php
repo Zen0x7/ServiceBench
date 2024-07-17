@@ -5,7 +5,7 @@
 
 {{ __('In order to complete the registration please confirm this email:') }}
 
-<x-mail::button :url="url('/auth/verify/' . $user->verification_token)">
+<x-mail::button :url="$url">
 {{ __("Yes, it's mine") }}
 </x-mail::button>
 
