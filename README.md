@@ -1,3 +1,7 @@
+<p align="center">
+<img src="https://raw.githubusercontent.com/Zen0x7/ServiceBench/master/public/logo.svg" alt="Service Bench" height="100">
+</p>
+
 <h1 align="center">Service Bench</h1>
 
 <p align="center">
