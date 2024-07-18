@@ -71,7 +71,6 @@ export const useAuthentication = defineStore('authentication', () => {
                 bearer: '' as string,
             }
 
-            console.log(response)
         } catch (e) {
 
             console.log(e)
