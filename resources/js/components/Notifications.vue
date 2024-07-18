@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import {
-    InformationCircleIcon,
-    XCircleIcon,
     XMarkIcon,
 } from '@heroicons/vue/24/outline'
 import { useNotifications } from "@/stores/notifications.ts";
@@ -13,11 +11,8 @@ const show = ref(true)
 </script>
 
 <template>
-    <!-- Global notification live region, render this permanently at the end of the document -->
     <div aria-live="assertive" class="z-30 pointer-events-none fixed inset-0 mt-14 flex items-end px-4 py-6 sm:items-start sm:p-6">
         <div class="flex w-full flex-col items-center space-y-4 sm:items-end">
-            <!-- Notification panel, dynamically insert this into the live region when it needs to be displayed -->
-
             <transition v-for="(event, index) in notifications.events" enter-active-class="transform ease-out duration-300 transition" enter-from-class="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2" enter-to-class="translate-y-0 opacity-100 sm:translate-x-0" leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
                 <div v-if="event.visible" class="pointer-events-auto w-full max-w-sm overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-black ring-opacity-5">
                     <div class="p-4">

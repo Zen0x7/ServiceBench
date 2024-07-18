@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { onMounted } from "vue";
+import {onMounted} from "vue";
 import {useRoute, useRouter} from "vue-router";
-import { useNotifications } from "@/stores/notifications.ts";
+import {useNotifications} from "@/stores/notifications.ts";
 
 const route = useRoute();
 const router = useRouter();
@@ -18,9 +18,9 @@ onMounted(async () => {
             title: "Address verification success",
             body: "The account has been verified",
         });
-        await router.push({ path: '/auth/login' })
+        await router.push({path: '/auth/login'})
     } catch (e) {
-        await router.push({ path: '/auth/login' })
+        await router.push({path: '/auth/login'})
         if (e.response) {
             switch (e.response.status) {
                 case 422:

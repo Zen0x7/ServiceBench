@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import {useForm} from 'laravel-precognition-vue';
-import {onMounted} from "vue";
 import {useRoute, useRouter} from "vue-router";
 import {useNotifications} from "@/stores/notifications.ts";
 import {useAuthentication} from "@/stores/authentication.ts";
@@ -36,49 +35,13 @@ const submit = () => form.submit()
             body: "Service cannot process the request"
         });
     });
-
-
-onMounted(async () => {
-    // try {
-    //     await window.axios.post("/api/auth/verify", {
-    //         token: route.params.token,
-    //     })
-    //     notifications.push({
-    //         type: 'success',
-    //         title: "Address verification success",
-    //         body: "The account has been verified",
-    //     });
-    // } catch (e) {
-    //     if (e.response) {
-    //         switch (e.response.status) {
-    //             case 422:
-    //                 notifications.push({
-    //                     type: 'error',
-    //                     title: "Address verification failed",
-    //                     body: "The account doesn't exists",
-    //                 });
-    //                 // Token doesn't exists
-    //                 break;
-    //             case 403:
-    //                 notifications.push({
-    //                     type: 'warning',
-    //                     title: "Your account is already verified",
-    //                     body: "The link has been used previously"
-    //                 });
-    //                 break;
-    //         }
-    //     } else {
-    //         // Service unavailable
-    //     }
-    // }
-})
 </script>
 
 <template>
     <div class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=emerald&shade=600"
-                 alt="Your Company"/>
+            <img class="mx-auto h-20 w-auto" src="/logo.svg"
+                 alt="Service Bench"/>
             <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Registration</h2>
         </div>
 
