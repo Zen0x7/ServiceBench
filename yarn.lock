@@ -310,6 +310,11 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.18.1.tgz#0cb240c147c0dfd0e3eaff4cc060a772d39e155c"
   integrity sha512-yjk2MAkQmoaPYCSu35RLJ62+dz358nE83VfTePJRp8CG7aMg25mEJYpXFiD+NcevhX8LxD5OP5tktPXnXN7GDw==
 
+"@sauromates/vue-gravatar@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@sauromates/vue-gravatar/-/vue-gravatar-1.0.0.tgz#d30badbba62b5039a2283ed5a2fb441bab3b29fa"
+  integrity sha512-xUXorE8FKqwZxHZEsC1p/tPX0yAmThs1ymMgxVzswTi1YWLpxbfhBPrFP8x/CDxV9aCCvfF1nCOjBbS2UVwsIA==
+
 "@tailwindcss/forms@^0.5.7":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.7.tgz#db5421f062a757b5f828bc9286ba626c6685e821"
@@ -481,7 +486,7 @@ autoprefixer@^10.4.19:
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
 
-axios@^1.6.4:
+axios@^1.4.0, axios@^1.6.4:
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.2.tgz#b625db8a7051fbea61c35a3cbb3a1daa7b9c7621"
   integrity sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==
@@ -821,6 +826,22 @@ jiti@^1.21.0:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.6.tgz#6c7f7398dd4b3142767f9a168af2f317a428d268"
   integrity sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==
 
+laravel-precognition-vue@^0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/laravel-precognition-vue/-/laravel-precognition-vue-0.5.6.tgz#48601dfad1d1168645e1d8274a973dc0f2530425"
+  integrity sha512-1+APSs2EC8U4s0WHGzEvOQHRQ1uJ365W/ohJUn0Ug+iCi+dpoXGoVYwVJozJCS3Tb5093d5e41/9NJX3qQ04HQ==
+  dependencies:
+    laravel-precognition "0.5.6"
+    lodash-es "^4.17.21"
+
+laravel-precognition@0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/laravel-precognition/-/laravel-precognition-0.5.6.tgz#14dd3a5a8a6562df744299d5429fb9f4908bfd54"
+  integrity sha512-nmCcrFm+p4yoJwlLR8vfDx+8KzEugzNrv0vzzXiz4Nul4ivxekfNIX4HhhP5jZ/U28J4RBtaeRfG17ncyfiogg==
+  dependencies:
+    axios "^1.4.0"
+    lodash-es "^4.17.21"
+
 laravel-vite-plugin@^1.0:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/laravel-vite-plugin/-/laravel-vite-plugin-1.0.5.tgz#0d1881bf69d9d420a01f33db183adb82d9143362"
@@ -843,6 +864,11 @@ lines-and-columns@^1.1.6:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
+
+lodash-es@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
 lru-cache@^10.2.0:
   version "10.4.3"

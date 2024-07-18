@@ -4,7 +4,7 @@ use App\Http\Controllers\Api\Auth\VerifyController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/{param?}', function () {

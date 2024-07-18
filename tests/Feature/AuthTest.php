@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class AuthTest extends TestCase
@@ -14,6 +15,7 @@ class AuthTest extends TestCase
     {
         $user = User::factory()->create([
             'password' => bcrypt('password'),
+            'verification_token' => Str::random(64),
         ]);
 
         $response = $this->json('POST', '/api/auth/attempt', [
@@ -33,6 +35,7 @@ class AuthTest extends TestCase
     {
         $user = User::factory()->create([
             'password' => bcrypt('wrong_password'),
+            'verification_token' => Str::random(64),
         ]);
 
         $response = $this->json('POST', '/api/auth/attempt', [
@@ -51,6 +54,7 @@ class AuthTest extends TestCase
     {
         $user = User::factory()->create([
             'password' => bcrypt('password'),
+            'verification_token' => Str::random(64),
         ]);
 
         $token = $user->createToken('Personal Access Token', ['*'], now()->addYear());
