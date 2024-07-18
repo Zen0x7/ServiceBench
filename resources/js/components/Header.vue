@@ -1,9 +1,8 @@
 <script setup lang="ts">
 
 import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/vue";
-import {ChevronDownIcon, MagnifyingGlassIcon} from "@heroicons/vue/20/solid";
+import {ChevronDownIcon, MagnifyingGlassIcon,UserCircleIcon} from "@heroicons/vue/20/solid";
 import {Bars3Icon, BellIcon} from "@heroicons/vue/24/outline";
-import { Gravatar } from '@sauromates/vue-gravatar'
 import {useNavigation} from "@/stores/navigation.ts";
 import {useAuthentication} from "@/stores/authentication.ts";
 
@@ -41,12 +40,9 @@ const authentication = useAuthentication();
                     <Menu v-if="authentication.has_profile" as="div" class="relative">
                         <MenuButton class="-m-1.5 flex items-center p-1.5">
                             <span class="sr-only">Open user menu</span>
-                            <Gravatar class="h-8 w-8 rounded-full"
-                                      :email="authentication.auth.user.email"
-                                      rating="g"
-                                      force-default="y"/>
+                            <UserCircleIcon class="h-8 w-8 rounded-full text-gray-400"/>
                             <span class="hidden lg:flex lg:items-center">
-                                <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">{{ authentication.auth.user.name }}</span>
+                                <span class="ml-2 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">{{ authentication.auth.user.name }}</span>
                                 <ChevronDownIcon class="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
                             </span>
                         </MenuButton>

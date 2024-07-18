@@ -310,11 +310,6 @@
   resolved "https://registry.yarnpkg.com/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.18.1.tgz#0cb240c147c0dfd0e3eaff4cc060a772d39e155c"
   integrity sha512-yjk2MAkQmoaPYCSu35RLJ62+dz358nE83VfTePJRp8CG7aMg25mEJYpXFiD+NcevhX8LxD5OP5tktPXnXN7GDw==
 
-"@sauromates/vue-gravatar@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@sauromates/vue-gravatar/-/vue-gravatar-1.0.0.tgz#d30badbba62b5039a2283ed5a2fb441bab3b29fa"
-  integrity sha512-xUXorE8FKqwZxHZEsC1p/tPX0yAmThs1ymMgxVzswTi1YWLpxbfhBPrFP8x/CDxV9aCCvfF1nCOjBbS2UVwsIA==
-
 "@tailwindcss/forms@^0.5.7":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@tailwindcss/forms/-/forms-0.5.7.tgz#db5421f062a757b5f828bc9286ba626c6685e821"
