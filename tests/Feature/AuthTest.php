@@ -73,4 +73,51 @@ class AuthTest extends TestCase
 
         $response->assertStatus(401);
     }
+
+    public function test_success_register(): void
+    {
+        $user = User::factory()->make();
+
+        $response = $this->json('POST', '/api/auth/register', [
+            'name' => $user->name,
+            'email' => $user->email,
+            'password' => 'S3cr3t_P4$w0rd',
+            'password_confirmation' => 'S3cr3t_P4$w0rd',
+        ]);
+
+        $response->assertStatus(200)
+            ->assertJsonStructure(['message']);
+    }
+
+    public function test_success_verify(): void
+    {
+        $token = Str::random(64);
+
+        User::factory()->unverified()->create([
+            'verification_token' => $token,
+        ]);
+
+        $response = $this->json('POST', '/api/auth/verify', [
+            'token' => $token,
+        ]);
+
+        $response->assertStatus(200)
+            ->assertJsonStructure(['message']);
+    }
+
+    public function test_forbidden_verify(): void
+    {
+        $token = Str::random(64);
+
+        User::factory()->create([
+            'verification_token' => $token,
+        ]);
+
+        $response = $this->json('POST', '/api/auth/verify', [
+            'token' => $token,
+        ]);
+
+        $response->assertStatus(403)
+            ->assertJsonStructure(['message']);
+    }
 }
