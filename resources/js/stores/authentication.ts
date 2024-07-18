@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
+import { useLocalStorage } from '@vueuse/core';
 
 interface user {
     id: number
@@ -11,7 +12,7 @@ interface user {
 }
 
 export const useAuthentication = defineStore('authentication', () => {
-    const auth = ref({
+    const auth = ref(useLocalStorage("auth", {
         user: {
             id: '',
             name: '',
@@ -21,12 +22,12 @@ export const useAuthentication = defineStore('authentication', () => {
             updated_at: '',
         } as user,
         bearer: '' as string,
-    })
+    }))
 
     const teams = ref([
-        { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-        { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-        { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
+        { id: 1, name: 'Infrastructure', href: '#', initial: 'I', current: false },
+        { id: 2, name: 'Engineering', href: '#', initial: 'E', current: false },
+        { id: 3, name: 'UI', href: '#', initial: 'U', current: false },
     ])
 
     const is_authenticated = computed(() => auth.value.bearer != '')
