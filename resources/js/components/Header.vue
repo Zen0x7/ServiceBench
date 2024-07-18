@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/vue";
 import {ChevronDownIcon, MagnifyingGlassIcon,UserCircleIcon} from "@heroicons/vue/20/solid";
 import {Bars3Icon, BellIcon} from "@heroicons/vue/24/outline";
@@ -18,7 +17,6 @@ const authentication = useAuthentication();
                 <Bars3Icon class="h-6 w-6" aria-hidden="true" />
             </button>
 
-            <!-- Separator -->
             <div class="h-6 w-px bg-gray-200 lg:hidden" aria-hidden="true" />
 
             <div class="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
@@ -33,10 +31,8 @@ const authentication = useAuthentication();
                         <BellIcon class="h-6 w-6" aria-hidden="true" />
                     </button>
 
-                    <!-- Separator -->
                     <div class="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-200" aria-hidden="true" />
 
-                    <!-- Profile dropdown -->
                     <Menu v-if="authentication.has_profile" as="div" class="relative">
                         <MenuButton class="-m-1.5 flex items-center p-1.5">
                             <span class="sr-only">Open user menu</span>
