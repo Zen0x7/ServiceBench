@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Auth\RegisterRequest;
 use App\Mail\UserRegistered;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -24,7 +23,7 @@ class RegisterController extends Controller
         Mail::to($user)->send(new UserRegistered($user));
 
         return response()->json([
-            "message" => "success"
+            'message' => 'success',
         ]);
     }
 }

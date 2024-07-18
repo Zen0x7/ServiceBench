@@ -22,7 +22,7 @@ class VerifyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "token" => 'required|exists:users,verification_token',
+            'token' => 'required|exists:users,verification_token',
         ];
     }
 }

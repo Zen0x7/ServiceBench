@@ -33,7 +33,7 @@ class UserRegistered extends Mailable implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __("Welcome to ") . env("APP_NAME", "Service Bench"),
+            subject: __('Welcome to ').env('APP_NAME', 'Service Bench'),
         );
     }
 

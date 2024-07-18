@@ -13,20 +13,22 @@ class VerifyController extends Controller
      */
     public function __invoke(VerifyRequest $request)
     {
-        $token = $request->input("token");
+        $token = $request->input('token');
 
-        if (! User::query()->where('verification_token', $token)->exists())
-            return response()->json(["message" => "unauthorized"], 401);
+        if (! User::query()->where('verification_token', $token)->exists()) {
+            return response()->json(['message' => 'unauthorized'], 401);
+        }
 
-        if (! User::query()->where('verification_token', $token)->whereNull('email_verified_at')->exists())
-            return response()->json(["message" => "forbidden"], 403);
+        if (! User::query()->where('verification_token', $token)->whereNull('email_verified_at')->exists()) {
+            return response()->json(['message' => 'forbidden'], 403);
+        }
 
         User::query()->where('verification_token', $token)->update([
             'email_verified_at' => now(),
         ]);
 
         return response()->json([
-            "message" => "success",
+            'message' => 'success',
         ]);
     }
 }
