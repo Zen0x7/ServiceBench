@@ -7,7 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Str;
 use Tests\TestCase;
 
-class HorizonTest extends TestCase
+class PulseTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -18,7 +18,7 @@ class HorizonTest extends TestCase
             'verification_token' => Str::random(64),
         ]);
 
-        $response = $this->actingAs($user)->get('/horizon');
+        $response = $this->actingAs($user)->get('/pulse');
 
         $response->assertStatus(200);
     }
