@@ -44,10 +44,14 @@ router.beforeEach((to, from, next) => {
     if (guest_routes.includes(to.name) && !authentication.is_authenticated) {
         next();
     } else {
-        if (!authentication.is_authenticated) {
+        if (!authentication.is_authenticated && to.name !== "Verify") {
             next({ name: 'Login' })
         } else {
-            next();
+            if (to.name == "Login" && authentication.is_authenticated) {
+                next({ name: 'Dashboard' })
+            } else {
+                next();
+            }
         }
     }
 })
