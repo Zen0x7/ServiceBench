@@ -21,6 +21,29 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Cache node dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            yarn-
+
+      - name: Set node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
+      - name: Run yarn install
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
+
+      - name: Run yarn build
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build
+
       - name: Cache composer dependencies
         uses: actions/cache@v2
         with:
