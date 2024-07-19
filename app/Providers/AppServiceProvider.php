@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,10 +22,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('viewPulse', function (User $user) {
-            return in_array($user->email, [
+        Gate::define('viewPulse', function (?User $user = null) {
+            return App::environment('local') || in_array($user->email, [
                 env('APP_ADMIN_EMAIL', 'iantorres@outlook.com'),
             ]);
         });
+
     }
 }
