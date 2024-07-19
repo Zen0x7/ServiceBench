@@ -3,6 +3,7 @@ import {useForm} from 'laravel-precognition-vue';
 import {useRoute, useRouter} from "vue-router";
 import {useNotifications} from "@/stores/notifications.ts";
 import {useAuthentication} from "@/stores/authentication.ts";
+import {subscribe} from "@/services/broadcasting.ts";
 
 
 const route = useRoute();

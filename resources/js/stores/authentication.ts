@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import { useLocalStorage } from '@vueuse/core';
+import {subscribe, unsubscribe} from "@/services/broadcasting.ts";
 
 interface user {
     id: number
@@ -36,28 +37,27 @@ export const useAuthentication = defineStore('authentication', () => {
 
     const set_token = async (token: string) => {
         auth.value.bearer = token;
-
+        window.axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         try {
-            const response = await window.axios.get("/api/user", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                }
-            })
-
+            const response = await window.axios.get("/api/user")
             auth.value.user = response.data;
+            subscribe(auth.value.user.id);
         } catch (e) {
-
+            console.log(e)
         }
     }
 
     const revoke = async () => {
         try {
-            const response = await window.axios.post("/api/auth/revoke", {},{
+            unsubscribe(auth.value.user.id)
+
+            await window.axios.post("/api/auth/revoke", {},{
                 headers: {
                     Accept: "application/json",
-                    Authorization: `Bearer ${auth.value.bearer}`,
                 }
             })
+
+            delete window.axios.defaults.headers.common["Authorization"];
 
             auth.value = {
                 user: {
@@ -72,7 +72,6 @@ export const useAuthentication = defineStore('authentication', () => {
             }
 
         } catch (e) {
-
             console.log(e)
         }
     }
