@@ -11,6 +11,7 @@ interface basic_event {
 interface advanced_event extends basic_event {
     id: string
     visible: boolean
+    created_at: Date
 }
 
 export const useNotifications = defineStore('notifications', () => {
@@ -21,6 +22,7 @@ export const useNotifications = defineStore('notifications', () => {
         events.value.push({
             id: id,
             visible: true,
+            created_at: new Date(),
             ...event,
         } as advanced_event)
 
