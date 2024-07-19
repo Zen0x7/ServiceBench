@@ -59,20 +59,20 @@ export const useAuthentication = defineStore('authentication', () => {
 
             delete window.axios.defaults.headers.common["Authorization"];
 
-            auth.value = {
-                user: {
-                    id: '',
-                    name: '',
-                    email: '',
-                    email_verified_at: '',
-                    created_at: '',
-                    updated_at: '',
-                } as user,
-                bearer: '' as string,
-            }
-
         } catch (e) {
             console.log(e)
+        }
+
+        auth.value = {
+            user: {
+                id: '',
+                name: '',
+                email: '',
+                email_verified_at: '',
+                created_at: '',
+                updated_at: '',
+            } as user,
+            bearer: '' as string,
         }
     }
 
