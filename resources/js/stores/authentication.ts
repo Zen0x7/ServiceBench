@@ -25,6 +25,10 @@ export const useAuthentication = defineStore('authentication', () => {
         bearer: '' as string,
     }))
 
+    const users = ref([]);
+
+    const connected_users = ref([]);
+
     const teams = ref([
         { id: 1, name: 'Infrastructure', href: '#', initial: 'I', current: false },
         { id: 2, name: 'Engineering', href: '#', initial: 'E', current: false },
@@ -35,6 +39,10 @@ export const useAuthentication = defineStore('authentication', () => {
 
     const has_profile = computed(() => auth.value.user.id != '')
 
+    const is_connected = (user) => {
+        return connected_users.value.some((item) => item.id === user.id)
+    }
+
     const set_token = async (token: string) => {
         auth.value.bearer = token;
         window.axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -42,8 +50,19 @@ export const useAuthentication = defineStore('authentication', () => {
             const response = await window.axios.get("/api/user")
             auth.value.user = response.data;
             subscribe(auth.value.user.id);
+            await get_users();
         } catch (e) {
             console.log(e)
+        }
+    }
+
+    const get_users = async () => {
+        try {
+            const response = await window.axios.get("/api/users")
+
+            users.value = response.data;
+        } catch (e) {
+
         }
     }
 
@@ -79,9 +98,13 @@ export const useAuthentication = defineStore('authentication', () => {
 
     return {
         auth,
+        users,
+        connected_users,
         teams,
         is_authenticated,
         has_profile,
+        is_connected,
+        get_users,
         set_token,
         revoke,
     }

@@ -12,6 +12,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::get('/users', \App\Http\Controllers\Api\Users\IndexController::class)->middleware('auth:sanctum');
+
 Route::post('/auth/attempt', AttemptController::class)
     ->middleware([HandlePrecognitiveRequests::class]);
 
