@@ -27,6 +27,11 @@ const routes = [
         path: "/dashboard",
         component: () => import("./pages/auth/Dashboard.vue")
     },
+    {
+        name: "Users",
+        path: "/users/:id",
+        component: () => import("./pages/users/Show.vue")
+    },
 ];
 
 const router = createRouter({

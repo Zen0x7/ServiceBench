@@ -22,4 +22,16 @@ class UsersTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_users_show(): void
+    {
+        $user = User::factory()->create([
+            'password' => bcrypt('password'),
+            'verification_token' => Str::random(64),
+        ]);
+
+        $response = $this->actingAs($user)->json('GET', "/api/users/{$user->id}");
+
+        $response->assertStatus(200);
+    }
 }
