@@ -9,11 +9,12 @@ import {subscribe} from "@/services/broadcasting.ts";
 
 const authentication = useAuthentication();
 
-onMounted(() => {
+onMounted(async () => {
     if (authentication.is_authenticated) {
         // We need to reestablish the connection and subscribe to the required channels
         window.axios.defaults.headers.common["Authorization"] = `Bearer ${authentication.auth.bearer}`;
         subscribe(authentication.auth.user.id);
+        await authentication.get_users();
     }
 })
 </script>
