@@ -50,6 +50,7 @@ export const useAuthentication = defineStore('authentication', () => {
             const response = await window.axios.get("/api/user")
             auth.value.user = response.data;
             subscribe(auth.value.user.id);
+            await get_users();
         } catch (e) {
             console.log(e)
         }
