@@ -7,5 +7,5 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 });
 
 Broadcast::channel('App', function ($user) {
-    return ["id" => $user->id];
+    return ['id' => $user->id];
 });
