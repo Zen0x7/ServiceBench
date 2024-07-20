@@ -28,8 +28,8 @@ onMounted(async () => {
         <div :class="[authentication.is_authenticated ? 'lg:pl-72' : '']">
             <Header />
 
-            <main class="py-10">
-                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <main>
+                <div class="mx-auto">
                     <router-view v-slot="{ Component, route }">
                         <div :key="route.name">
                             <Component :is="Component" />
