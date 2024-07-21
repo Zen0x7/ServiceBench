@@ -1,0 +1,100 @@
+version: "3"
+services:
+    proxy:
+        image: haproxy
+        ports:
+            - "8100:8100"
+        volumes:
+            - ./container/haproxy:/usr/local/etc/haproxy
+        networks:
+            - internal
+        depends_on:
+            - mysql
+            - workers
+            - websockets
+    workers:
+        deploy:
+            mode: replicated
+            replicas: 8
+        environment:
+            DB_CONNECTION: mysql
+            DB_HOST: db
+            DB_PORT: 3306
+            DB_DATABASE: db
+            DB_USERNAME: user
+            DB_PASSWORD: password
+            REVERB_APP_ID: 730678
+            REVERB_APP_KEY: tuobtmrpqlqjmi6mcufu
+            REVERB_APP_SECRET: nupln8pdup39zh78wko4
+            REVERB_HOST: "localhost"
+            REVERB_PORT: 8080
+            REVERB_SCHEME: http
+            VITE_REVERB_APP_KEY: tuobtmrpqlqjmi6mcufu
+            VITE_REVERB_HOST: localhost
+            VITE_REVERB_PORT: 8100
+            VITE_REVERB_SCHEME: http
+        env_file: ".env"
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        networks:
+            - internal
+        expose:
+            - "8000:8000"
+        depends_on:
+            - mysql
+    websockets:
+        deploy:
+            mode: replicated
+            replicas: 8
+        environment:
+            DB_CONNECTION: mysql
+            DB_HOST: db
+            DB_PORT: 3306
+            DB_DATABASE: db
+            DB_USERNAME: user
+            DB_PASSWORD: password
+            REVERB_APP_ID: 730678
+            REVERB_APP_KEY: tuobtmrpqlqjmi6mcufu
+            REVERB_APP_SECRET: nupln8pdup39zh78wko4
+            REVERB_HOST: "localhost"
+            REVERB_PORT: 8080
+            REVERB_SCHEME: http
+            VITE_REVERB_APP_KEY: tuobtmrpqlqjmi6mcufu
+            VITE_REVERB_HOST: localhost
+            VITE_REVERB_PORT: 8100
+            VITE_REVERB_SCHEME: http
+        env_file: ".env"
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        entrypoint: ./reverb.sh
+        networks:
+            - internal
+        expose:
+            - "8080:8080"
+        depends_on:
+            - mysql
+            - workers
+    mysql:
+        container_name: db
+        hostname: db
+        image: mysql:5.7
+        restart: always
+        environment:
+            MYSQL_DATABASE: 'db'
+            MYSQL_USER: 'user'
+            MYSQL_PASSWORD: 'password'
+            MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+            - "33066:3306"
+        volumes:
+            - db_volume:/var/lib/mysql
+        networks:
+            - internal
+networks:
+    internal:
+        driver: bridge
+
+volumes:
+    db_volume:
