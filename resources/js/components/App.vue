@@ -20,12 +20,12 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div>
+    <div class="h-full">
         <Notifications />
         <SidebarResponsive />
         <SidebarDesktop />
 
-        <div :class="[authentication.is_authenticated ? 'lg:pl-72' : '']">
+        <div :class="[authentication.is_authenticated ? 'lg:pl-72' : '', 'h-full']">
             <Header />
 
             <main>
