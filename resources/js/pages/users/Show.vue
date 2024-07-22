@@ -41,9 +41,9 @@ onMounted(async () => {
                     </div>
                     <div class="flex min-w-0 flex-1 items-center justify-end space-x-6 pb-1">
                         <div class="min-w-0 flex-1 block">
-                            <h1 class="truncate text-md sm:text-lg md:text-2xl font-bold text-white">{{ user.name }}</h1>
+                            <h1 class="truncate text-md font-bold text-white">{{ user.name }}</h1>
                         </div>
-                        <div class="flex justify-stretch space-y-3 flex-row space-x-4 space-y-0">
+                        <div class="flex justify-stretch  flex-row space-x-4 space-y-0">
                             <button type="button" class="inline-flex justify-center rounded-full py-2 px-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-emerald-700">
                                 <MagnifyingGlassIcon class="h-4 w-4 text-white" aria-hidden="true" />
                             </button>
@@ -56,8 +56,8 @@ onMounted(async () => {
             </div>
         </div>
 
-        <div class="fixed bottom-0 p-6">
-            <commenter />
+        <div class="fixed bottom-0 min-w-full lg:pr-72">
+            <commenter class="p-4" />
         </div>
     </div>
 </template>
