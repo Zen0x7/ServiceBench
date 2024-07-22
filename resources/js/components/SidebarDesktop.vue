@@ -44,7 +44,7 @@ const route = useRoute();
                     <li>
                         <div class="text-xs font-semibold leading-6 text-gray-400">Users</div>
                         <ul role="list" class="-mx-2 mt-2 space-y-1">
-                            <li v-for="user in authentication.users" :key="user.name">
+                            <li v-for="user in authentication.users_except_himself" :key="user.name">
                                 <RouterLink :to="`/users/${user.id}`"
                                             :class="[route.path === `/users/${user.id}` ? 'bg-gray-100' : '', 'text-gray-700 hover:bg-gray-50 hover:text-emerald-600', 'group flex gap-x-3 rounded-full p-2 text-sm font-semibold leading-9']">
                                     <span class="relative inline-flex">

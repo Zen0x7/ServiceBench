@@ -5,6 +5,8 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\Auth\RevokeController;
 use App\Http\Controllers\Api\Auth\VerifyController;
 use App\Http\Controllers\Api\Users\IndexController;
+use App\Http\Controllers\Api\Users\ReceiveController;
+use App\Http\Controllers\Api\Users\SendController;
 use App\Http\Controllers\Api\Users\ShowController;
 use Illuminate\Foundation\Http\Middleware\HandlePrecognitiveRequests;
 use Illuminate\Http\Request;
@@ -16,6 +18,8 @@ Route::get('/user', function (Request $request) {
 
 Route::get('/users', IndexController::class)->middleware('auth:sanctum');
 Route::get('/users/{user}', ShowController::class)->middleware('auth:sanctum');
+Route::post('/users/{user}/send', SendController::class)->middleware('auth:sanctum');
+Route::get('/users/{user}/receive', ReceiveController::class)->middleware('auth:sanctum');
 
 Route::post('/auth/attempt', AttemptController::class)
     ->middleware([HandlePrecognitiveRequests::class]);

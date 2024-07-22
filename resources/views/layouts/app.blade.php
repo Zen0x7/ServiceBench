@@ -9,6 +9,6 @@
     @vite('resources/js/app.ts')
 </head>
 <body class="h-full">
-<div id="app"></div>
+<div id="app" class="h-full"></div>
 </body>
 </html>
