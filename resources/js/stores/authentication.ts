@@ -29,6 +29,8 @@ export const useAuthentication = defineStore('authentication', () => {
 
     const connected_users = ref([]);
 
+    const users_except_himself = computed(() => users.value.filter((item) => item.email !== auth.value.user.email))
+
     const teams = ref([
         { id: 1, name: 'Infrastructure', href: '#', initial: 'I', current: false },
         { id: 2, name: 'Engineering', href: '#', initial: 'E', current: false },
@@ -99,6 +101,7 @@ export const useAuthentication = defineStore('authentication', () => {
     return {
         auth,
         users,
+        users_except_himself,
         connected_users,
         teams,
         is_authenticated,

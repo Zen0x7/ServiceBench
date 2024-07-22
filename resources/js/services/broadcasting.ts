@@ -1,11 +1,21 @@
 import {useAuthentication} from "@/stores/authentication.ts";
+import {useChat} from "@/stores/chat.ts";
 
 export const subscribe = (id) => {
     const authentication = useAuthentication();
+    const chat = useChat();
 
     window.Echo.private(`App.Models.User.${id}`)
         .notification((notification) => {
             console.log(notification)
+
+            if (notification.type == 'App\\Notifications\\MessageSent' || notification.type == 'App\\\Notifications\\MessageReceived') {
+                if (chat.on == notification.message.on) {
+                    chat.push(notification.message)
+                }
+            } else {
+                console.log("WTF")
+            }
         })
 
     const channel = window.Echo
@@ -26,6 +36,7 @@ export const subscribe = (id) => {
             }
         })
         .error((error) => {
+
             console.error(error);
         });
 }

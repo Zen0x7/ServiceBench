@@ -12,6 +12,7 @@ import {
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import {Gravatar} from "@sauromates/vue-gravatar";
 import {useAuthentication} from "@/stores/authentication.ts";
+import {useRoute} from "vue-router";
 
 const moods = [
     { name: 'Excited', value: 'excited', icon: FireIcon, iconColor: 'text-white', bgColor: 'bg-red-500' },
@@ -25,17 +26,27 @@ const moods = [
 const authentication = useAuthentication();
 
 const selected = ref(moods[5])
+
+const route = useRoute();
+
+const body = ref();
+
+const submit = () => {
+    window.axios.post(`/api/users/${route.params.id}/send`, {
+        body: body.value,
+    })
+}
 </script>
 
 <template>
-    <div class="mt-6 flex gap-x-3">
+    <div class="flex gap-x-3 bg-white h-48">
         <Gravatar class="h-6 w-6 flex-none rounded-full bg-gray-50"
                   :email="authentication.auth.user.email"
                   rating="g" />
         <form action="#" class="relative flex-auto">
-            <div class="overflow-hidden rounded-lg pb-12 shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-indigo-600">
+            <div class="overflow-hidden rounded-lg pb-12 shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-emerald-600">
                 <label for="comment" class="sr-only">Add your comment</label>
-                <textarea rows="2" name="comment" id="comment" class="block w-full resize-none border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Add your comment..." />
+                <textarea rows="2" v-model="body" name="comment" id="comment" class="block w-full resize-none border-0 bg-transparent py-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6" placeholder="Add your comment..." />
             </div>
 
             <div class="absolute inset-x-0 bottom-0 flex justify-between py-2 pl-3 pr-2">
@@ -83,7 +94,7 @@ const selected = ref(moods[5])
                         </Listbox>
                     </div>
                 </div>
-                <button type="submit" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Comment</button>
+                <button type="button" @click="submit" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Comment</button>
             </div>
         </form>
     </div>
