@@ -10,10 +10,10 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-        "on",
-        "from_id",
-        "to_id",
-        "body",
+        'on',
+        'from_id',
+        'to_id',
+        'body',
     ];
 
     public function from()

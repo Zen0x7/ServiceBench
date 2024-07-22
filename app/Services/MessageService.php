@@ -8,6 +8,7 @@ class MessageService
     {
         $array = [$first, $second];
         sort($array);
-        return implode("_", $array);
+
+        return implode('_', $array);
     }
 }

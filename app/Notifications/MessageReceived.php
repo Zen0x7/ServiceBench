@@ -4,8 +4,6 @@ namespace App\Notifications;
 
 use App\Models\Message;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class MessageReceived extends Notification
@@ -40,7 +38,7 @@ class MessageReceived extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            "message" => $this->message,
+            'message' => $this->message,
         ];
     }
 }

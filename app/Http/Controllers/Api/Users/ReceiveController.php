@@ -16,8 +16,8 @@ class ReceiveController extends Controller
     public function __invoke(Request $request, User $user)
     {
         $messages = Message::query()
-            ->where("on", MessageService::toString(auth()->user()->id, $user->id))
-            ->where(function($query) use ($user) {
+            ->where('on', MessageService::toString(auth()->user()->id, $user->id))
+            ->where(function ($query) use ($user) {
                 $query->where([
                     'from_id' => auth()->user()->id,
                     'to_id' => $user->id,

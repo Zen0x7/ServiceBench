@@ -19,10 +19,10 @@ class SendController extends Controller
     {
         $message = Message::query()
             ->create([
-                "on" => MessageService::toString(auth()->user()->id, $user->id),
-                "from_id" => auth()->user()->id,
-                "to_id" => $user->id,
-                "body" => $request->input('body'),
+                'on' => MessageService::toString(auth()->user()->id, $user->id),
+                'from_id' => auth()->user()->id,
+                'to_id' => $user->id,
+                'body' => $request->input('body'),
             ]);
 
         $message->load(['from', 'to']);
