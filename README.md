@@ -16,6 +16,26 @@
 
 <h2 align="center">About</h2>
 
+> At this point, Service Bench doesn't have any objective or goal to reach. Is more like a scaffolding project than a self-hosted application. 
+>
+> Discussions about what it could be can be realized in issues
+> 
+> Software is released with no license. Components used by this project has been released in their respective licenses.
+> 
+> ¿What does it mean? 
+>
+> There are no freedom to use the code of this project at least a explicit license has been provided by author. 
+> 
+> In fact, there will be sanctions (economical and international) if you use portions of the code without an explicit license.
+> 
+> ¿This project will include a license in some future?
+> 
+> Yes, it could be a MIT, GNU license but at the moment there are no active discussion about that.
+> 
+> ¿Which grants will have the authors or contributors of the project?
+> 
+> If you want to contribute on this project, issues and pull requests are open to be received. Of course, the issue need to be first instead of a PR as is an author rights violation, so discussion will provide the specific case license. 
+
 <h2 align="center">Requirements</h2>
 
 ```
